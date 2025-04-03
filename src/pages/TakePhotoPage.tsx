@@ -1,4 +1,3 @@
-import React from 'react'
 import StickerSwitcher from '../components/sticker/StickerSwitcher'
 import PhotoCapture from '../components/PhotoCapture'
 
