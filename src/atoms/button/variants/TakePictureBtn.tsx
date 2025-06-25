@@ -1,6 +1,6 @@
 import { Button } from "../Button";
 import cameraIcon from "@/assets/icons/camera.svg";
-import { copy } from "@/locales/pl";
+import { copy } from "../../../locales/pl";
 export const TakePictureButton = (
   props: React.ComponentProps<typeof Button>
 ) => {
