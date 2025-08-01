@@ -92,7 +92,7 @@ function App() {
 
 
 
-  const download = async () => {
+  const upload = async () => {
     'use server'
     //download image
     if (!canvasRef.current) return;
@@ -121,7 +121,7 @@ function App() {
           capturedImage,
           setCapturedImage,
           mergeImages,
-          download,
+          upload,
           handleStep,
           takeRawPhoto,
           rawPhoto,

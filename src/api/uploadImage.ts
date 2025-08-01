@@ -1,4 +1,8 @@
 import { base_api_url } from "./config";
+const headers = {
+ Authorization: `Custom 1Bzh9NoRhE_ldAuV1_f1IS_g1K3x200AANIfIy36cGMVM6tmr0Za1kqjops95hbvGGo76RaLCOP85e0o3yzlpw`
+
+}
 // headers: {
 //   "Content-Type":
 //     "multipart/form-data",
@@ -24,15 +28,24 @@ function dataURLtoBlob(dataUrl: string): Blob {
   return new Blob([u8arr], { type: mime });
 }
 
-export const uploadImage = async (image: string): Promise<string> => {
+export const uploadImage = async (image: string): Promise<string | undefined> => {
   "use server";
   const formData = new FormData();
     const imageBlob = dataURLtoBlob(image);
-  formData.append("image", image,);
+  formData.append("image", imageBlob, "upload.png")
   console.log("Image to upload:", image);
-  const response = await fetch(`${base_api_url}photos/`, {
-    method: "POST",
-    body: formData,
-  });
-  console.log("Response status:", response);
+  try {
+    const response = await fetch(`${base_api_url}photos/`, {
+      method: "POST",
+      headers,
+      body: formData,
+    });
+    const {url} = await response.json();
+
+    return url
+  } catch (error) {
+    console.error("Error uploading image:", error);
+  }
+
+  
 };

@@ -29,9 +29,9 @@ export type PhotoContextType = {
   mergeImages: () => Promise<void>;
 
   /**
-   * Download the merged image to the user's machine (temporary implementation)
+   * Upload the merged image to the server and get the download link
    */
-  download: () => void;
+  upload: () => void;
 
   /**
    * Represents the current step of the user in the photo-taking flow
@@ -63,7 +63,7 @@ export const PhotoContext = createContext<PhotoContextType>({
   capturedImage: null,
   setCapturedImage: () => {},
   mergeImages: async() => {},
-  download: () => {},
+  upload: () => {},
   takeRawPhoto: () => {},
   rawPhoto: null,
 });

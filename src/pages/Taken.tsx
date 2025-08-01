@@ -7,10 +7,10 @@ import { PhotoContext } from "@/contexts/PhotoContext";
 import { useContext } from "react";
 
 const Taken = () => {
-  const { handleStep, mergeImages, download } = useContext(PhotoContext);
+  const { handleStep, mergeImages, upload } = useContext(PhotoContext);
   const handleDownload = async () => {
     await mergeImages();
-    download();
+    upload();
     handleStep("saving");
     setTimeout(() => {
       handleStep("saved");
