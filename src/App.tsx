@@ -13,6 +13,7 @@ import frame5 from "./assets/frames/frame5.png";
 import frame6 from "./assets/frames/frame6.png";
 import frame7 from "./assets/frames/frame7.png";
 import sweetek1 from "./assets/frames/sweetek1.png";
+import { uploadImage } from "./api/uploadImage";
 
 function App() {
   const [step, setStep] = useState<StepType>("preview");
@@ -87,14 +88,27 @@ function App() {
       };
     });
   }, [sticker, rawPhoto]);
+  
 
-  const download = () => {
-    //TODO: it should send photo(upload) to our temporary database
+
+
+  const upload = async () => {
+    'use server'
+    //download image
     if (!canvasRef.current) return;
     const link = document.createElement("a");
     link.href = canvasRef.current.toDataURL("image/png");
     link.download = "candy-image.png";
-    link.click();
+    // link.click();
+
+    //TODO: it should send photo(upload) to our temporary database
+    try {
+     const imageURL = await uploadImage(link.href)
+     console.log("Image uploaded successfully:", imageURL); 
+    } catch (error) {
+      console.error("Error uploading image:", error); 
+    }
+
   };
 
   return (
@@ -107,7 +121,7 @@ function App() {
           capturedImage,
           setCapturedImage,
           mergeImages,
-          download,
+          upload,
           handleStep,
           takeRawPhoto,
           rawPhoto,

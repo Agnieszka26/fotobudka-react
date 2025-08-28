@@ -15,6 +15,7 @@ export const RoundBtn = ({ onClick, className, variant }: Props) => {
 
   return (
     <button
+    // {$$typeof: Symbol.for("react.server.reference"), $$id: 'download', $$bound: [Function]}
       onClick={onClick}
       className={btnClass}
       style={{

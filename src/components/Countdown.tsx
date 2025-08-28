@@ -9,7 +9,7 @@ import { FadeInOut } from "@/atoms/animate/FadeInOut";
 
 function Countdown() {
   const colors = tailwindConfig.theme?.extend?.colors as Colors;
-  const [count, setCount] = useState(4);
+  const [count, setCount] = useState(1);
   const { takeRawPhoto, handleStep } = useContext(PhotoContext);
   useEffect(() => {
     if (count === 0) return;
